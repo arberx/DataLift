@@ -3,10 +3,7 @@
 var dataSet = [];
 
 document.addEventListener( 'DOMContentLoaded', function () {
-	// Run this once after the DOM is loaded
 	if (!!window.EventSource) {
-		// Good example on using SSE
-		// http://www.html5rocks.com/en/tutorials/eventsource/basics/
 
 		var source = new EventSource('data');
 		source.addEventListener('message', function(e) {
@@ -46,9 +43,6 @@ function handleData(data) {
 	ctx.fillStyle = "#000000";
 
 	for(var ii = 0; ii < dataSet.length; ii++) {
-		// The canvas coordinate space increases going down the page, but the graph
-		// makes more sense flipped the other way so subtract the value from the
-		// maximum value
 		var yy = 255 - dataSet[ii];
 
 		ctx.fillRect(ii, yy, 1, 1);
