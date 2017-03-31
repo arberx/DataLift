@@ -1,26 +1,24 @@
 // Run this like:
 // node livegraph.js
-//
-// Make sure you're in the directory containing livegraph.js and the public directory that contains the
 
 var http = require('http');
 var url = require('url');
 var fs = require('fs');
 var path = require('path');
-var baseDirectory = path.join(__dirname, "public");  
+var baseDirectory = path.join(__dirname, "public");
 var net = require('net');
 
-// httpPort is the port the web browser is listening on. You might open in your browser:
+// httpPort is the port the web browser is listening on.
 // http://localhost:8080/
 var httpPort = 8080;
 
-// dataPort is the TCP port we listen on from the Photon. This value is encoded in the Photon code
+// dataPort is the TCP port we listen on from the Photon.
 var dataPort = 8081;
 
 // This array holds the clients (actually http server response objects) to send data to over SSE
 var clients = [];
 
-//  For the static files we server out of the 
+//  For the static files we server out of the
 var contentTypeByExtension = {
 		'.css':  'text/css',
 		'.gif':  'image/gif',
@@ -33,13 +31,11 @@ var contentTypeByExtension = {
 // Create an HTTP server
 http.createServer(function (request, response) {
 	try {
-		// Technique modified from this:
-		// http://stackoverflow.com/questions/6084360/using-node-js-as-a-simple-web-server
 		var requestUrl = url.parse(request.url);
-	
+
 		// path.normalize prevents using .. to go above the base directory
 		var pathname = path.normalize(requestUrl.pathname);
-		
+
 		if (pathname == '/data' || pathname == '\\data') {
 			// Return SSE data
 			// http://www.html5rocks.com/en/tutorials/eventsource/basics/
@@ -49,7 +45,7 @@ http.createServer(function (request, response) {
 					'Connection': 'keep-alive'
 			};
 			response.writeHead(200, headers);
-			
+
 			console.log("starting sse");
 			clients.push(response);
 		}
@@ -58,20 +54,17 @@ http.createServer(function (request, response) {
 			if (pathname == '/' || pathname == '\\') {
 				pathname = 'index.html';
 			}
-			 			
-			// Handle static file like index.html and main.js
-			
+
 			// Include an appropriate content type for known files like .html, .js, .css
 			var headers = {};
 		    var contentType = contentTypeByExtension[path.extname(pathname)];
 		    if (contentType) {
 		    	headers['Content-Type'] = contentType;
 		    }
-		    		    
-			// path.normalize prevents using .. to go above the base directory above, so
+
 		    // this can only serve files in the public directory
 			var fsPath = path.join(baseDirectory, pathname);
-			 
+
 			var fileStream = fs.createReadStream(fsPath);
 			response.writeHead(200, headers);
 			fileStream.pipe(response);
@@ -88,17 +81,14 @@ http.createServer(function (request, response) {
 }).listen(httpPort)
 
 // Start a TCP Server. This is what receives data from the Particle Photon
-// https://gist.github.com/creationix/707146
 net.createServer(function (socket) {
 	console.log('data connection started from ' + socket.remoteAddress);
-	
-	// The server sends a 8-bit byte value for each sample. Javascript doesn't really like
-	// binary values, so we use setEncoding to read each byte of a data as 2 hex digits instead.
+
+	// The server sends a 8-bit byte value for each sample. data as 2 hex digits
 	socket.setEncoding('hex');
-	
+
 	socket.on('data', function (data) {
-		// We received data on this connection. Send it to all of the SSE clients.
-		// console.log('data ' + data);
+		//Send it to all of the SSE clients.
 		sendDataToClients(data);
 	});
 	socket.on('end', function () {
@@ -110,14 +100,14 @@ net.createServer(function (socket) {
 // Send data to all SSE web browser clients. data must be a string.
 function sendDataToClients(data) {
 	var failures = [];
-	
+
 	clients.forEach(function (client) {
 		// console.log("sending data");
 		if (!client.write('data: ' + data + '\n\n')) {
 			failures.push(client);
 		}
 	});
-	
+
 	failures.forEach(function (client) {
 		console.log("ending sse");
 		removeClient(client);
@@ -125,7 +115,7 @@ function sendDataToClients(data) {
 	});
 }
 
-// Remove client (actually a HttpServer response object) from the list of active clients 
+// Remove client (actually a HttpServer response object) from the list of active clients
 function removeClient(client) {
 	var index = clients.indexOf(client);
 	if (index >= 0) {
@@ -133,6 +123,6 @@ function removeClient(client) {
 	}
 }
 
- 
+
 
 console.log('listening on port ' + httpPort + ' for http');

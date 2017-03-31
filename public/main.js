@@ -2,9 +2,15 @@
 // Data samples are stored here
 var dataSet = [];
 
+
+//for reactnative look here:
+https://www.npmjs.com/package/react-native-eventsource
+
+//add event listener, when intial html has been loaded
 document.addEventListener( 'DOMContentLoaded', function () {
 	if (!!window.EventSource) {
 
+		// EventSource is used to listen to server sent events receives events in text/event-stream format
 		var source = new EventSource('data');
 		source.addEventListener('message', function(e) {
 			// e.data is the SSE data, which is a two-character hexadecimal string representing a value
