@@ -2,8 +2,8 @@
 // Data samples are stored here
 var dataSet = [];
 
-// add smooth chart
-var smoothie = new SmoothieChart();
+// // add smooth chart
+// var smoothie = new SmoothieChart();
 
 
 //for reactnative look here:
@@ -30,41 +30,41 @@ document.addEventListener( 'DOMContentLoaded', function () {
 }, false );
 
 function handleData(data) {
-	// // data is a number value (currently 0 - 255)
+	// data is a number value (currently 0 - 255)
 
-	// var canvas = document.getElementById("canvas");
-	// var ctx = canvas.getContext("2d");
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
 
-	// // console.log(data);
+	// console.log(data);
 
-	// // Add to the data set, remove from the left if it gets wider than the canvas
-	// dataSet.push(data);
-	// if (dataSet.length > (canvas.width - 1)) {
-	// 	dataSet.shift();
-	// }
+	// Add to the data set, remove from the left if it gets wider than the canvas
+	dataSet.push(data);
+	if (dataSet.length > (canvas.width - 1)) {
+		dataSet.shift();
+	}
 
-	// // Erase
-	// ctx.fillStyle = "#ffffff";
-	// ctx.fillRect(0, 0, canvas.width, canvas.height);
+	// Erase
+	ctx.fillStyle = "#ffffff";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	// // Draw samples
-	// ctx.fillStyle = "#000000";
+	// Draw samples
+	ctx.fillStyle = "#000000";
 
-	// for(var ii = 0; ii < dataSet.length; ii++) {
-	// 	var yy = 255 - dataSet[ii];
+	for(var ii = 0; ii < dataSet.length; ii++) {
+		var yy = 255 - dataSet[ii];
 
-	// 	ctx.fillRect(ii, yy, 1, 1);
-	// }
+		ctx.fillRect(ii, yy, 1, 1);
+	}
 
-	var canvas = document.getElementById("mycanvas");
+	// var canvas = document.getElementById("mycanvas");
 
-	console.log(data);
+	// console.log(data);
 
-	var line1 = new TimeSeries();
+	// var line1 = new TimeSeries();
 
-	line1.append(new Date().getTime(), data);
+	// line1.append(new Date().getTime(), data);
 
-	smoothie.addTimeSeries(line1);
-	smoothie.streamTo(canvas);
+	// smoothie.addTimeSeries(line1);
+	// smoothie.streamTo(canvas);
 }
 
