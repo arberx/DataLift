@@ -53,6 +53,8 @@ function handleData(data) {
 	// 	ctx.fillRect(ii, yy, 1, 1);
 	// }
 
+	var canvas = document.getElementById("mycanvas");
+
 	console.log(data);
 
 	// add smooth chart
@@ -68,6 +70,6 @@ function handleData(data) {
 	}
 
 	smoothie.addTimeSeries(line1);
-	smoothie.streamTo(document.getElementById("mycanvas"));
+	smoothie.streamTo(canvas);
 }
 
