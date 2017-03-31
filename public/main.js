@@ -2,6 +2,10 @@
 // Data samples are stored here
 var dataSet = [];
 
+// add smooth chart
+var smoothie = new SmoothieChart();
+
+
 //for reactnative look here:
 https://www.npmjs.com/package/react-native-eventsource
 
@@ -24,7 +28,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
 		console.log('sse not supported');
 	}
 }, false );
-
 
 function handleData(data) {
 	// // data is a number value (currently 0 - 255)
@@ -56,9 +59,6 @@ function handleData(data) {
 	var canvas = document.getElementById("mycanvas");
 
 	console.log(data);
-
-	// add smooth chart
-	var smoothie = new SmoothieChart();
 
 	var line1 = new TimeSeries();
 
