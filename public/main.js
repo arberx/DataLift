@@ -2,7 +2,6 @@
 // Data samples are stored here
 var dataSet = [];
 
-
 //for reactnative look here:
 https://www.npmjs.com/package/react-native-eventsource
 
@@ -28,31 +27,49 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 
 function handleData(data) {
-	// data is a number value (currently 0 - 255)
+	// // data is a number value (currently 0 - 255)
 
-	var canvas = document.getElementById("canvas");
-	var ctx = canvas.getContext("2d");
+	// var canvas = document.getElementById("canvas");
+	// var ctx = canvas.getContext("2d");
 
-	// console.log(data);
+	// // console.log(data);
+
+	// // Add to the data set, remove from the left if it gets wider than the canvas
+	// dataSet.push(data);
+	// if (dataSet.length > (canvas.width - 1)) {
+	// 	dataSet.shift();
+	// }
+
+	// // Erase
+	// ctx.fillStyle = "#ffffff";
+	// ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+	// // Draw samples
+	// ctx.fillStyle = "#000000";
+
+	// for(var ii = 0; ii < dataSet.length; ii++) {
+	// 	var yy = 255 - dataSet[ii];
+
+	// 	ctx.fillRect(ii, yy, 1, 1);
+	// }
+
+	console.log(data);
+
+	// add smooth chart
+	var smoothie = new SmoothieChart();
+
+	var line1 = new TimeSeries();
 
 	// Add to the data set, remove from the left if it gets wider than the canvas
-	dataSet.push(data);
-	if (dataSet.length > (canvas.width - 1)) {
-		dataSet.shift();
+	line1.append(new Date().getTime(), data);
+
+	if (line1.length > (canvas.width - 1)) {
+		line1.shift();
 	}
 
-	// Erase
-	ctx.fillStyle = "#ffffff";
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	smoothie.addTimeSeries(line1);
 
-	// Draw samples
-	ctx.fillStyle = "#000000";
-
-	for(var ii = 0; ii < dataSet.length; ii++) {
-		var yy = 255 - dataSet[ii];
-
-		ctx.fillRect(ii, yy, 1, 1);
-	}
+	smoothie.streamTo(document.getElementById("mycanvas"));
 
 
 }
