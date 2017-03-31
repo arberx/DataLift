@@ -32,7 +32,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 function handleData(data) {
 	// data is a number value (currently 0 - 255)
 
-	var canvas = document.getElementById("canvas");
+	var canvas = document.getElementById("mycanvas");
 	var ctx = canvas.getContext("2d");
 
 	// console.log(data);
