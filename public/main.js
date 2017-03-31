@@ -62,12 +62,7 @@ function handleData(data) {
 
 	var line1 = new TimeSeries();
 
-	// Add to the data set, remove from the left if it gets wider than the canvas
 	line1.append(new Date().getTime(), data);
-
-	if (line1.length > (canvas.width - 1)) {
-		line1.shift();
-	}
 
 	smoothie.addTimeSeries(line1);
 	smoothie.streamTo(canvas);
