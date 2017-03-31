@@ -68,7 +68,6 @@ function handleData(data) {
 	// }
 
 	smoothie.addTimeSeries(line1);
-	smoothie.streamTo(document.getElementById("canvas"));
-
+	smoothie.streamTo(document.getElementById("mycanvas"));
 }
 
