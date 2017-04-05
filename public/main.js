@@ -40,7 +40,7 @@ function handleData(data) {
 
 	console.log("fAve: " + fAve)
 
-	document.getElementsByClassName('averg_v').value = fAve;
+	document.getElementById("averg_v").innerHTML = fAve;
 
 	var canvas = document.getElementById("mycanvas");
 	var ctx = canvas.getContext("2d");
