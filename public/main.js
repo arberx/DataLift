@@ -1,6 +1,8 @@
 
 // Data samples are stored here
 var dataSet = [];
+var fAve = 0.0;
+var fSmp = 0;
 
 // // add smooth chart
 // var smoothie = new SmoothieChart();
@@ -17,7 +19,7 @@ document.addEventListener( 'DOMContentLoaded', function () {
 		var source = new EventSource('data');
 		source.addEventListener('message', function(e) {
 			// e.data is the SSE data, which is a two-character hexadecimal string representing a value
-			console.log("msg=" + e.data);
+			// console.log("msg=" + e.data);
 
             for(var ii = 0; ii < e.data.length; ii += 2) {
                 handleData(parseInt('0x' + e.data.substr(ii, 2)));
@@ -31,11 +33,18 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 function handleData(data) {
 	// data is a number value (currently 0 - 255)
+	var weight = 0
+	fSmp += 1;
+	weight = 1/fSmp;
+	fAve = (weight * data) + ((1-weight) * fAve);
+
+	console.log("fAve: " + fAve)
+
+	document.getElementsByClassName('averg_v').value = fAve;
 
 	var canvas = document.getElementById("mycanvas");
 	var ctx = canvas.getContext("2d");
 
-	// console.log(data);
 
 	// Add to the data set, remove from the left if it gets wider than the canvas
 	dataSet.push(data);
@@ -54,6 +63,8 @@ function handleData(data) {
 		var yy = 255 - dataSet[ii];
 
 		ctx.fillRect(ii, yy, 3, 3);
+
+
 	}
 
 	// var canvas = document.getElementById("mycanvas");
