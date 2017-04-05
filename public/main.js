@@ -53,7 +53,7 @@ function handleData(data) {
 	for(var ii = 0; ii < dataSet.length; ii++) {
 		var yy = 255 - dataSet[ii];
 
-		ctx.fillRect(ii, yy, 1, 1);
+		ctx.fillRect(ii, yy, 3, 3);
 	}
 
 	// var canvas = document.getElementById("mycanvas");
