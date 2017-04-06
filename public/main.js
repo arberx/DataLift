@@ -41,14 +41,15 @@ function handleData(data) {
 	weight = 1/fSmp;
 	fAve = (weight * data) + ((1-weight) * fAve);
 
-	if (previous_point != 0 && previous_point < data){
+	if (previous_point != 0 && previous_point < (data-10)){
 		global_counter += 1;
 	}
 
 	if (global_counter == 20){
 		rep_counter += 1;
 		global_counter = 0;
-		fAve = 0; fSmp = 0;
+		fAve = 0;
+		fSmp = 0;
 	}
 
 	// set previous point equal to data
