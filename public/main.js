@@ -3,6 +3,9 @@
 var dataSet = [];
 var fAve = 0.0;
 var fSmp = 0;
+var previous_point = 0;
+var global_counter = 0;
+var rep_counter = 0;
 
 // // add smooth chart
 // var smoothie = new SmoothieChart();
@@ -38,9 +41,25 @@ function handleData(data) {
 	weight = 1/fSmp;
 	fAve = (weight * data) + ((1-weight) * fAve);
 
+	if (previous_point != 0 && previous_point < (data){
+		global_counter += 1;
+	}
+
+	if (global_counter == 10){
+		rep_counter += 1;
+		global_counter = 0;
+	}
+
+	// set previous point equal to data
+	previous_point = data;
 	console.log("fAve: " + fAve)
 
 	document.getElementById("averg_v").innerHTML = fAve;
+
+	// display the global rep_counter
+	document.getElementById("reps").innerHTML = rep_counter;
+
+	console.log("global_counter: " + global_counter);
 
 	var canvas = document.getElementById("mycanvas");
 	var ctx = canvas.getContext("2d");
