@@ -45,7 +45,7 @@ function handleData(data) {
 		global_counter += 1;
 	}
 
-	if (global_counter == 10){
+	if (global_counter == 20){
 		rep_counter += 1;
 		global_counter = 0;
 	}
