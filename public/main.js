@@ -48,6 +48,7 @@ function handleData(data) {
 	if (global_counter == 20){
 		rep_counter += 1;
 		global_counter = 0;
+		fAve = 0; fSmp = 0;
 	}
 
 	// set previous point equal to data
