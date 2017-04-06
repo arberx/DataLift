@@ -7,9 +7,6 @@ var previous_point = 0;
 var global_counter = 0;
 var rep_counter = 0;
 
-// // add smooth chart
-// var smoothie = new SmoothieChart();
-
 
 //for reactnative look here:
 https://www.npmjs.com/package/react-native-eventsource
@@ -41,27 +38,26 @@ function handleData(data) {
 	weight = 1/fSmp;
 	fAve = (weight * data) + ((1-weight) * fAve);
 
-	if (previous_point != 0 && previous_point < (fAve)){
+	if (previous_point != 0 && previous_point < (data - 3)){
 		global_counter += 1;
 	}
 
-	if (global_counter == 20){
+	if (global_counter == 17){
 		rep_counter += 1;
 		global_counter = 0;
-		fAve = 0;
-		fSmp = 0;
 	}
 
 	// set previous point equal to data
-	previous_point = fAve;
+	previous_point = data;
 	console.log("fAve: " + fAve)
+	console.log("global_counter: " + global_counter);
 
+	// display the "power score"
 	document.getElementById("averg_v").innerHTML = fAve;
 
 	// display the global rep_counter
 	document.getElementById("reps").innerHTML = rep_counter;
 
-	console.log("global_counter: " + global_counter);
 
 	var canvas = document.getElementById("mycanvas");
 	var ctx = canvas.getContext("2d");
@@ -88,15 +84,5 @@ function handleData(data) {
 
 	}
 
-	// var canvas = document.getElementById("mycanvas");
-
-	// console.log(data);
-
-	// var line1 = new TimeSeries();
-
-	// line1.append(new Date().getTime(), data);
-
-	// smoothie.addTimeSeries(line1);
-	// smoothie.streamTo(canvas);
 }
 
