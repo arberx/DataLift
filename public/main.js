@@ -41,7 +41,7 @@ function handleData(data) {
 	weight = 1/fSmp;
 	fAve = (weight * data) + ((1-weight) * fAve);
 
-	if (previous_point != 0 && previous_point < (data-10)){
+	if (previous_point != 0 && previous_point < (fAve)){
 		global_counter += 1;
 	}
 
@@ -53,7 +53,7 @@ function handleData(data) {
 	}
 
 	// set previous point equal to data
-	previous_point = data;
+	previous_point = fAve;
 	console.log("fAve: " + fAve)
 
 	document.getElementById("averg_v").innerHTML = fAve;
