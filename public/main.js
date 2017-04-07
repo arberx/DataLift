@@ -82,5 +82,3 @@ function handleData(data) {
 	}
 
 }
-
-}  //end main onclick function
