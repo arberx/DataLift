@@ -8,9 +8,14 @@ var global_counter = 0;
 var rep_counter = 0;
 
 
-//add event listener, when intial html has been loaded
+window.onload = function () {
+	var x = document.getElementById("startRecord");
+	x.addEventListener("click", startLiveGraph);
+}
 
-document.getElementById('startRecord').addEventListener("click", function () {
+
+//add event listener, when intial html has been loaded
+function startLiveGraph()  {
 	if (!!window.EventSource) {
 
 		// EventSource is used to listen to server sent events receives events in text/event-stream format
@@ -27,7 +32,7 @@ document.getElementById('startRecord').addEventListener("click", function () {
 	else {
 		console.log('sse not supported');
 	}
-}, false );
+}
 
 function handleData(data) {
 	// data is a number value (currently 0 - 255)
