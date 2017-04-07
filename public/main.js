@@ -7,10 +7,23 @@ var previous_point = 0;
 var global_counter = 0;
 var rep_counter = 0;
 
+var set_counter = 0;
 
 window.onload = function () {
 	var x = document.getElementById("startRecord");
+	var y = document.getElementById("pauseRecord");
+	y.addEventListener("click", recordEvent);
 	x.addEventListener("click", startLiveGraph);
+}
+
+// display the paused value at the bottom of the screen
+function recordEvent(){
+var arry_leng = dataSet.length();
+
+//last value in the array
+var i = dataSet[i-1];
+document.getElementById("display_value").innerHTML = "Max Score for Set: " + i;
+
 }
 
 
