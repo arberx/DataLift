@@ -21,7 +21,7 @@ function recordEvent(){
 var arry_leng = dataSet.length;
 
 //last value in the array
-var i = dataSet[i-1];
+var i = dataSet[arry_leng-1];
 document.getElementById("display_value").innerHTML = "Max Score for Set: " + i;
 
 }
