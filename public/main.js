@@ -9,10 +9,8 @@ var rep_counter = 0;
 
 
 //add event listener, when intial html has been loaded
-var x = document.getElementById('startRecord');
 
-
- x.addEventListener( 'click', function () {
+document.getElementById('startRecord').addEventListener("click", function () {
 	if (!!window.EventSource) {
 
 		// EventSource is used to listen to server sent events receives events in text/event-stream format
@@ -80,7 +78,6 @@ function handleData(data) {
 		var yy = 255 - dataSet[ii];
 
 		ctx.fillRect(ii, yy, 3, 3);
-
 
 	}
 
