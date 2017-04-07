@@ -18,7 +18,7 @@ window.onload = function () {
 
 // display the paused value at the bottom of the screen
 function recordEvent(){
-var arry_leng = dataSet.length();
+var arry_leng = dataSet.length;
 
 //last value in the array
 var i = dataSet[i-1];
