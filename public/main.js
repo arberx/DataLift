@@ -26,8 +26,6 @@ window.onload = function () {
 // display the paused value at the bottom of the screen
 function recordEvent(){
 
-	start.removeListener("click", startLiveGraph);
-
 	var arry_leng = dataSet.length;
 
 	//last value in the array
