@@ -85,7 +85,7 @@ function handleData(data) {
 	document.getElementById("reps").innerHTML = rep_counter;
 
 
-	var canvas = document.getElementsByClassName("containermarketing").getElementById('mycanvas')[0];
+	var canvas = document.getElementById('mycanvas');
 	var ctx = canvas.getContext("2d");
 
 
