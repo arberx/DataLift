@@ -1,6 +1,13 @@
 
+/*
+Variation of Livegraph JS
+*/
+
+
+
 // Data samples are stored here
 var dataSet = [];
+// values for calculating
 var fAve = 0.0;
 var fSmp = 0;
 var previous_point = 0;
@@ -10,19 +17,22 @@ var rep_counter = 0;
 var set_counter = 0;
 
 window.onload = function () {
-	var x = document.getElementById("startRecord");
-	var y = document.getElementById("pauseRecord");
-	y.addEventListener("click", recordEvent);
-	x.addEventListener("click", startLiveGraph);
+	var start = document.getElementById("startRecord");
+	var stop = document.getElementById("pauseRecord");
+	stop.addEventListener("click", recordEvent);
+	start.addEventListener("click", startLiveGraph);
 }
 
 // display the paused value at the bottom of the screen
 function recordEvent(){
-var arry_leng = dataSet.length;
 
-//last value in the array
-var i = dataSet[arry_leng-1];
-document.getElementById("display_value").innerHTML = "Max Score for Set: " + i;
+	start.removeListener("click", startLiveGraph);
+
+	var arry_leng = dataSet.length;
+
+	//last value in the array
+	var i = dataSet[arry_leng-1];
+	document.getElementById("display_value").innerHTML = "Max Score for Set: " + i;
 
 }
 
