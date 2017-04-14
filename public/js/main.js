@@ -80,7 +80,7 @@ function handleData(data) {
 	document.getElementById("averg_v").innerHTML = fAve;
 
 	// display the global rep_counter
-	document.getElementById("reps").innerHTML = rep_counter;
+	document.getElementById("reps").innerHTML = rep_counter / 2;
 
 
 	var canvas = document.getElementById('mycanvas');
