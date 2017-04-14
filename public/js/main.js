@@ -3,8 +3,6 @@
 Variation of Livegraph JS
 */
 
-
-
 // Data samples are stored here
 var dataSet = [];
 // values for calculating
