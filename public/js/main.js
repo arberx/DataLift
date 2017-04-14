@@ -103,7 +103,7 @@ function handleData(data) {
 	for(var ii = 0; ii < dataSet.length; ii++) {
 		var yy = 255 - dataSet[ii];
 
-		ctx.fillRect(ii, yy, 3, 3);
+		ctx.fillRect(ii, yy, 3, 3);
 
 	}
 
