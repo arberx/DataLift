@@ -19,9 +19,18 @@ var set_counter = 0;
 window.onload = function () {
 	var start = document.getElementById("startRecord");
 	var stop = document.getElementById("pauseRecord");
+	var record = document.getElementById("resetRep");
 	stop.addEventListener("click", recordEvent);
 	start.addEventListener("click", startLiveGraph);
+	record.addEventListener("click", repReset);
 }
+
+// reset the rep counter
+function repReset(){
+	rep_counter = 0;
+}
+
+
 
 // display the paused value at the bottom of the screen
 function recordEvent(){
