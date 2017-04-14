@@ -66,7 +66,7 @@ function handleData(data) {
 		global_counter += 1;
 	}
 
-	if (global_counter == 17){
+	if (global_counter == 8){
 		rep_counter += 1;
 		global_counter = 0;
 	}
@@ -80,7 +80,7 @@ function handleData(data) {
 	document.getElementById("averg_v").innerHTML = fAve;
 
 	// display the global rep_counter
-	document.getElementById("reps").innerHTML = int(rep_counter / 2);
+	document.getElementById("reps").innerHTML = Math.ceil(rep_counter / 2);
 
 
 	var canvas = document.getElementById('mycanvas');
