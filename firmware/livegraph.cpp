@@ -16,6 +16,9 @@ const int INPUT_PIN = A2;
 bool button_press = false;
 const int INPUT_PIN1 = D0;
 
+ int counter = 0;
+ int prevData = 0;
+
 
 IPAddress serverAddress(138,197,27,109);
 int serverPort = 8081;
@@ -23,19 +26,62 @@ int serverPort = 8081;
 // Finite state machine states
 enum {CONNECT_STATE, SEND_DATA_STATE};
 
+ int frame[200];
+ int  var = 0;
+ float average = 1000;
+
+int globSize = 200;
+    
 TCPClient client;
 unsigned long lastSend = 0;
 int state = CONNECT_STATE;
 
+
+
+
+float frame_average(float num){
+    int val = frame[var % globSize];
+    average -= val/globSize;
+    frame[var % globSize] = num;
+    average += num/globSize;
+    ++var;
+    return average;
+}
+
+float ave(float num)
+{
+    static float fAve = 0.0f;
+    static unsigned int fSmp = 0;
+    float weight = 0.0f;
+
+     
+    fSmp++;
+    weight = 1.0f / fSmp;
+    fAve = (weight * num) + ((1 - weight) * fAve);
+    if(digitalRead(INPUT_PIN1) == LOW && fSmp >10){
+        fSmp = 0;
+        fAve = 0.0f;
+    }
+    
+				if(counter > 17){
+				    counter =0;
+				    fSmp = 0;
+                    fAve = 0.0f;
+				}
+    return(fAve);
+}
+
 void setup() {
     pinMode(INPUT_PIN1, INPUT_PULLUP);
-
+    
 	Serial.begin(9600);
     LIS3DHConfig config;
     config.setAccelMode(LIS3DH::RATE_100_HZ);
     bool setupSuccess = accel.setup(config);
     Serial.printlnf("setupSuccess=%d", setupSuccess);
-
+    for(int q=0; q<globSize; ++q){
+    frame[q]  = -1;
+    }
 }
 
 void loop() {
@@ -46,7 +92,7 @@ void loop() {
     if(button == LOW){
         button_press = true;
     }
-
+    
     if(button_press){
 	switch(state) {
 	case CONNECT_STATE:
@@ -75,8 +121,16 @@ void loop() {
 				// int val = analogRead(INPUT_PIN) >> 4;
 				LIS3DHSample sample;
 				accel.getSample(sample);
+				sample.z = frame_average(sample.z);
 				int val = sample.z >> 4;
-
+				// if(sample.z !=0 && prevData < (val - 3)){
+				//     ++counter;
+				// }
+				if(digitalRead(INPUT_PIN1) == LOW){
+				    average = 1000;
+				}
+			
+			//	prevData = val;
 				Serial.println(val);
 
 				client.write(val);
@@ -94,3 +148,7 @@ void loop() {
 
 }
 }
+
+
+
+
