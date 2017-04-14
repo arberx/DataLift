@@ -51,6 +51,8 @@
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
+                <li class="pagescroll"><a href="#graph">Demo</a></li>
+
               </ul>
             </div>
           </div>
@@ -60,27 +62,6 @@
     </div>
 
 
-    <!-- Graphing
-    ================================================== -->
-    <div class="graphdiv">
-              <br>
-              <br>
-              <canvas id="mycanvas" width="400" height="200"></canvas>
-              <br>
-              <br>
-              <p>Power Score: <p id="averg_v"></p> </p>
-              <p>Reps: <p id="reps"></p> </p>
-
-            <a class="btn btn-default" id="startRecord" role="button">Start to Record»</a>
-            <a class="btn btn-default" id="pauseRecord" role="button">Record Rep»</a>
-            <p id="display_value"></p>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-    </div>
-
 
 
     <!-- Marketing messaging and featurettes
@@ -89,27 +70,7 @@
 
     <div class="container marketing">
 
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
+
 
 
       <!-- START THE FEATURETTES -->
@@ -118,11 +79,11 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">Tracking weight training hasn't evolved past pen and paper <span class="text-muted"></span></h2>
+          <p class="lead">Lift. Log. Lift. Log. Anyone who is serious about tracking strength knows this routine well. Not only is the task tedious, but it is frustrating to watch your numbers stay stagnant for weeks, even though you feel stronger.</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src="photos/pencil_and_paper.jpg" >
         </div>
       </div>
 
@@ -130,11 +91,11 @@
 
       <div class="row featurette">
         <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">Velocity based training is the future of lifting. <span class="text-muted">For a price</span></h2>
+          <p class="lead">The nmber of reps you do is not the only thing that matter, you also have to consider how easy and how fast you are able to complete each rep. This allows you to observe the small changes from workout to workout. Unfortunately, these systems can cost upwards of $10,000.</p>
         </div>
         <div class="col-md-5 col-md-pull-7">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src="photos/speed.jpg" >
         </div>
       </div>
 
@@ -142,11 +103,23 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          <h2 class="featurette-heading">The DataClip is the solution <span class="text-muted"></span></h2>
+          <p class="lead">The DataClip is a compact, inexpensive, and simple device that allows the user to see and record the amount of reps and velocity during a particular lift.</p>
         </div>
         <div class="col-md-5">
-          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          <img class="featurette-image img-responsive center-block" src ="photos/bracket.png" >
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">The press of a button transforms your workout.<span class="text-muted"></span></h2>
+          <p class="lead">There is no complicated set up necessary for use. Just rack your weight, clip on the DataClip, press a button, and lift. </p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive center-block" src="photos/bench.jpg" >
         </div>
       </div>
 
@@ -154,7 +127,29 @@
 
       <!-- /END THE FEATURETTES -->
 
+      <!-- Graphing
+      ================================================== -->
+      <section id="graph">
+      <div class="graphdiv">
+                <br>
+                <br>
+                <canvas id="mycanvas" width="400" height="200"></canvas>
+                <br>
+                <br>
+                <p>Power Score: <p id="averg_v"></p> </p>
+                <p>Reps: <p id="reps"></p> </p>
 
+              <a class="btn btn-default" id="startRecord" role="button">Start to Record»</a>
+              <a class="btn btn-default" id="pauseRecord" role="button">Record Rep»</a>
+              <p id="display_value"></p>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+      </div>
+
+    </section>
       <!-- FOOTER -->
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
