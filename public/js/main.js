@@ -1,6 +1,6 @@
 
 /*
-Variation of Livegraph JS
+Recieves and displays data from node server, also adds in features to smooth the data. 
 */
 
 
