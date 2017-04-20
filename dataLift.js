@@ -1,5 +1,6 @@
 // Run this like:
-// node livegraph.js
+//Note: Node Js must be installed
+// node dataLift.js
 
 var http = require('http');
 var url = require('url');
@@ -52,7 +53,7 @@ http.createServer(function (request, response) {
 		else {
 		    // Allows http://localhost:8080/ to be used as the URL to retrieve the main index page
 			if (pathname == '/' || pathname == '\\') {
-				pathname = 'index.html';
+				pathname = 'dataLift.html';
 			}
 
 			// Include an appropriate content type for known files like .html, .js, .css
