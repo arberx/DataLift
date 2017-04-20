@@ -5,7 +5,7 @@ Utilizes a accelerometer connected to a photon to connect to a server, and displ
 
 Code for photon in: firmware/dataLift.cpp
 
-Livegraph nodejs server inspired from: https://github.com/rickkas7/livegraph
+Real-Time SSE event transmition using node.js server inspired from: https://github.com/rickkas7/livegraph
 
 
 Video Demonstrating the App and the Visualization: DataLift:
