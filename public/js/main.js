@@ -3,8 +3,6 @@
 Recieves and displays data from node server, also adds in features to smooth the data. 
 */
 
-
-
 // Data samples are stored here
 var dataSet = [];
 // values for calculating
@@ -19,9 +17,18 @@ var set_counter = 0;
 window.onload = function () {
 	var start = document.getElementById("startRecord");
 	var stop = document.getElementById("pauseRecord");
+	var record = document.getElementById("resetRep");
 	stop.addEventListener("click", recordEvent);
 	start.addEventListener("click", startLiveGraph);
+	record.addEventListener("click", repReset);
 }
+
+// reset the rep counter
+function repReset(){
+	rep_counter = 0;
+}
+
+
 
 // display the paused value at the bottom of the screen
 function recordEvent(){
@@ -66,7 +73,7 @@ function handleData(data) {
 		global_counter += 1;
 	}
 
-	if (global_counter == 17){
+	if (global_counter == 8){
 		rep_counter += 1;
 		global_counter = 0;
 	}
@@ -80,7 +87,7 @@ function handleData(data) {
 	document.getElementById("averg_v").innerHTML = fAve;
 
 	// display the global rep_counter
-	document.getElementById("reps").innerHTML = rep_counter;
+	document.getElementById("reps").innerHTML = Math.ceil(rep_counter / 2);
 
 
 	var canvas = document.getElementById('mycanvas');
@@ -103,7 +110,7 @@ function handleData(data) {
 	for(var ii = 0; ii < dataSet.length; ii++) {
 		var yy = 255 - dataSet[ii];
 
-		ctx.fillRect(ii, yy, 3, 3);
+		ctx.fillRect(ii, yy, 3, 3);
 
 	}
 
