@@ -1,4 +1,4 @@
-#Livegraph
+
 Program using Particle Photon, node.js, SSE, HTML5 Canvas to do real-time, activity tracking. 
 
 Utilizes a accelerometer connected to a photon to connect to a server, and display real-time data. Also utilizes a algorithm to measure downward and upward movement(z-axis) and record the number of repitions; where one repition is defined as one complete upward and downward cycle. 
